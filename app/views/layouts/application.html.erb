@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CrowdFunding</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <!--# Reponsive layout on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Crowd Funding For Muslims</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Browse Products" %></li>
+          <li><%= link_to "Price List" %></li>
+          <li><%= link_to "Contact Us" %></li>
+          <li><%= link_to "Cart" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<% if current_user %>
+    Logged in as <%= current_user.email %>.
+    <%= link_to "Log out", logout_path %>
+<% else %>
+    <%= link_to "Sign up", signup_path %> or
+    <%= link_to "log in", login_path %>.
+
+    <%#= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
+    <!--<img src="/assets/img-1.jpg" width="42" height="42" alt="image"/>-->
+    <%= link_to 'images/loginWithFacebook', auth_at_provider_path(:provider => :facebook) %>
+    <%= image_tag "loginWithFacebook.jpg" %>
+<% end %>
+<%= yield %>
+</div>
+
+</body>
+</html>
